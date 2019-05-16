@@ -9,8 +9,8 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import ListItem from './src/components/list-item/list-item';
-import Input from './src/components/input/input';
+import Input from './src/components/input';
+import List from './src/components/list';
 
 // const instructions = Platform.select({
 //   ios: `Press Cmd+R to reload,
@@ -51,7 +51,6 @@ export default class App extends PureComponent<Props, State> {
   render() {
     const { placeName, places } = this.state;
     // eslint-disable-next-line react/no-array-index-key
-    const placeOutput = places.map((place, index) => <ListItem key={index} placeName={place} />);
 
     return (
       <View style={styles.container}>
@@ -63,8 +62,8 @@ export default class App extends PureComponent<Props, State> {
           onSubmit={this.placeSubmitHandler}
           buttonTitle="Add"
         />
-
-        <View style={styles.listContainer}>{placeOutput}</View>
+        <List items={places} />
+        {/* <View style={styles.listContainer}>{placeOutput}</View> */}
       </View>
     );
   }
